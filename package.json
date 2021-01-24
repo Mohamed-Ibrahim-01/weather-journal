@@ -1,0 +1,11 @@
+{
+  "name": "weather_app",
+  "version": "1.0.0",
+  "description": "An asynchronous web app that uses Web API and user data to dynamically update the UI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./server/server.js"
+  },
+  "author": "Mohamed Ahmed Mohamed Ibrahim",
+  "license": "MIT"
+}
