@@ -12,6 +12,8 @@ const app = express();
 const { PORT, HOST } = process.env;
 // Setup empty JS object to act as endpoint for all routes
 
+// Gettnig the Weather Route
+const weatherRoute = require('weatherRouter');
 /* Dependencies */
 /* Middleware*/
 
@@ -27,16 +29,15 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("../app"));
 
-//
+// Spin up the server
 function listening (){
     console.log(`Server is listening in port ${PORT}`);
 }
-
-// Spin up the server
 app.listen(PORT, listening);
 // Callback to debug
 
 // Initialize all route with a callback function
+app.use(weatherRoute);
 
 // Callback function to complete GET '/all'
 
