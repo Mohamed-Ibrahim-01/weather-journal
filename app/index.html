@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Journal</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Cabin+Sketch&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <nav class="nav-bar">
+            <h2 id="brand">Weather Journal ​☁️​☔​</h2>
+        </nav>
+        <main id="journal-input">
+            <div class="zip-input">
+                <label>Enter Zip Code⚓</label><br />
+                <input
+                    class="input-box"
+                    type="text"
+                    placeholder="Enter a zip code"
+                />
+            </div>
+            <div class="feeling-input">
+                <label>How are you feeling today ?</label><br />
+                <input
+                    class="input-box"
+                    type="text"
+                    placeholder="Your Feeling"
+                />
+            </div>
+            <button id="btn-generate">Generate</button>
+        </main>
+        <div class="output">
+            <p class="date">📅 Date:</p>
+            <p class="temp">🌡️ Temprature:</p>
+            <p class="feel">🌼 Feeling:</p>
+        </div>
+    </body>
+</html>

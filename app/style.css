@@ -1,0 +1,58 @@
+.nav-bar {
+    background-color: black;
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+#brand, body {
+    margin: 0;
+}
+html{
+    background-image: url("./img/bg.png");
+}
+#brand{
+    padding: 2vh 0.7vw;
+    font-family: 'Cabin Sketch', cursive;
+    color: white;
+}
+label{
+    font-family: 'Baloo Da 2', cursive;
+    font-size: x-large;
+    color: black;
+}
+.input-box{
+    padding: 0;
+    min-width: 350px;
+    min-height: 50px;
+    font-size: large;
+    text-align: center;
+}
+.feeling-input{
+    margin-top: 5vh;
+}
+#btn-generate:hover{
+    cursor: pointer;
+}
+#btn-generate{
+    min-width: 200px;
+    min-height: 40px;
+    background-color: black;
+    border: none;
+    border-radius: 1.5px;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: x-large;
+    color: white;
+    margin-top: 5vh;
+}
+#journal-input{
+    text-align: center;
+}
+.output{
+    font-size: large;
+    font-family: 'Baloo Da 2', cursive;
+    text-align: center;
+}
+.output > p{
+    display: inline-block;
+    padding: 5px;
+}
