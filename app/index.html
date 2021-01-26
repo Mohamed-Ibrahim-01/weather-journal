@@ -19,14 +19,16 @@
             <div class="zip-input">
                 <label>Enter Zip Code⚓</label><br />
                 <input
+                    id="zip"
                     class="input-box"
-                    type="text"
+                    type="number"
                     placeholder="Enter a zip code"
                 />
             </div>
             <div class="feeling-input">
                 <label>How are you feeling today ?</label><br />
                 <input
+                    id="feeling"
                     class="input-box"
                     type="text"
                     placeholder="Your Feeling"
@@ -35,9 +37,10 @@
             <button id="btn-generate">Generate</button>
         </main>
         <div class="output">
-            <p class="date">📅 Date:</p>
-            <p class="temp">🌡️ Temprature:</p>
-            <p class="feel">🌼 Feeling:</p>
+            <p id="date">📅 Date:</p>
+            <p id="temp">🌡️ Temprature:</p>
+            <p id="feel">🌼 Feeling:</p>
         </div>
+        <script src="./app.js"></script>
     </body>
 </html>
