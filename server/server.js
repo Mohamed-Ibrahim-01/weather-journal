@@ -27,14 +27,17 @@ app.listen(PORT, listening);
 
 //GET Route
 app.get('/getProjectData', (req, res) => {
+    console.log(projectData);
     res.send(projectData);
 });
 //POST Routes
 app.post('/storeInput', (req, res) => {
     projectData.inputData = req.body;
+    console.log("Data Stored ");
     res.send({ msg: 'Data Stored' });
 });
 app.post('/storeWeather', (req, res) => {
     projectData.weatherData = req.body;
+    console.log("Data Stored ");
     res.send({ msg: 'Data Stored' });
 });
