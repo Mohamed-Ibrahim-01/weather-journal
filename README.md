@@ -1,10 +1,23 @@
-# Weather-Journal App Project
+# Weather-Journal App Project ⚡️
 
-## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+## About
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+**Author:** Mohamed Ahmed Mohamed Ibrahim \
+**Purpose:** A training project about _asynchronous apss,web APIs, Node and Express_ in fwd Udacity scholership \
+**Target:**
+This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+## Implementation Steps
+
+-   Finish the UI
+-   Getting my API credentials of `openweathermap`
+-   Adding the functionality of generate button
+    -   Getting the user input using the `DOM`
+    -   Making a function to fetch weather data using `openweathermap` API
+        -   Constructing the path depending the user input we got
+        -   fetch the data using the generated url
+    -   Update the UI using the DOM and the fetched data
+-   Make GET,POST Routes in the server side
+
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> </p>

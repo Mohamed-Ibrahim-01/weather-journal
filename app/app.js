@@ -1,3 +1,6 @@
+/**
+ * Global variables
+ */
 let d = new Date();
 let date = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 const APIKEY = '62e30290b589b588152e348058e99031';
@@ -9,12 +12,20 @@ btn.addEventListener('click', (e) => {
     updateUI();
 });
 
+/**
+ * @param {string} zip which the user enters
+ * @description It constructs the path depends on the given zip
+ * @returns {string} Url with zip and apikey to fetch the data from openweather
+ */
 const constructAPI = (zip) => {
     const api = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=metric&appid=${APIKEY}`;
     console.log(api);
     return api;
 };
 /* Function called by event listener */
+/**
+ * @description Updates the UI depending on the user input and the fetched data then send post requests to the server
+ */
 const updateUI = async () => {
     const inputData = getInput();
     if (inputData.feeling && inputData.zip) {
@@ -37,12 +48,20 @@ const updateUI = async () => {
         console.log('Please Enter valid input');
     }
 };
+
+/**
+ * @param {HTMLCollection} list
+ * @description Clears the values for the given list
+ */
 const clearValues = (list) => {
     for (var i = 0; i < list.length; i++) {
         list[i].value = '';
     }
 };
 
+/**
+ * @description an async function that makes a get request to fetch the projectData
+ */
 const getProjectData = async () => {
     try {
         const projectData = await fetch('/getProjectData');
@@ -53,7 +72,10 @@ const getProjectData = async () => {
         console.log('CANT FETCH', err);
     }
 };
-/* Function to GET Web API Data*/
+/**
+ * @param {string} url a url to fetch data from
+ * @description an async function that makes a get request to fetch the weatherData from
+ */
 const getWeatherData = async (url) => {
     try {
         const fetchedData = await fetch(url);
@@ -65,6 +87,12 @@ const getWeatherData = async (url) => {
     }
 };
 
+/**
+ * @description an async function as a helper method in post request
+ * @param {string} url a url to fetch data from
+ * @param {object} reqInfo request info (method, headers , data)
+ */
+
 const makeReq = async (url, reqInfo) => {
     try {
         const response = await fetch(url, reqInfo);
@@ -75,7 +103,10 @@ const makeReq = async (url, reqInfo) => {
     }
 };
 
-/* Function to POST data */
+/**
+ * @description an async function to make POST request to store user input data
+ * @param {object} data data to be stored
+ */
 const storeInput = async (data) => {
     const reqData = data;
     const url = '/storeInput';
@@ -87,6 +118,10 @@ const storeInput = async (data) => {
     makeReq(url, reqInfo);
 };
 
+/**
+ * @description an async function to make POST request to store weather data fetched from "openweathermap"
+ * @param {object} data data to be stored
+ */
 const storeWeather = async (data) => {
     const reqData = data;
     const url = '/storeWeather';
@@ -98,7 +133,9 @@ const storeWeather = async (data) => {
     makeReq(url, reqInfo);
 };
 
-/* Function to GET Project Data */
+/**
+ * @description Getting user input from the DOM
+ */
 const getInput = () => {
     let feeling = document.getElementById('feeling').value;
     let zip = document.getElementById('zip').value;
