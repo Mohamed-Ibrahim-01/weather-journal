@@ -5,11 +5,20 @@ let d = new Date();
 let date = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 const APIKEY = '62e30290b589b588152e348058e99031';
 
-// Event listener to add function to existing HTML DOM element
+// Event listeners to add function to existing HTML DOM element
 const btn = document.getElementById('btn-generate');
+const inputs = document.getElementsByTagName('input');
+for (input of inputs) {
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            updateJournal();
+        }
+    });
+}
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    updateUI();
+    updateJournal();
 });
 
 /**
@@ -22,31 +31,29 @@ const constructAPI = (zip) => {
     console.log(api);
     return api;
 };
-/* Function called by event listener */
 /**
- * @description Updates the UI depending on the user input and the fetched data then send post requests to the server
+ * @description The function called by the generate button to make POST and GET requests and update UI
  */
-const updateUI = async () => {
+const updateJournal = async () => {
     const inputData = getInput();
-    if (inputData.feeling && inputData.zip) {
-        const url = constructAPI(inputData.zip);
-        const fetchedWeather = await getWeatherData(url);
-        const temprature = fetchedWeather.main.temp;
-        const feeling = inputData.feeling;
-
-        document.getElementById('date').innerHTML = `📅 Date: ${date}`;
-        document.getElementById(
-            'temp'
-        ).innerHTML = `🌡️ Temprature: ${temprature}`;
-        document.getElementById('feel').innerHTML = `🌼 Feeling:${feeling}`;
-        clearValues(document.getElementsByTagName('input'));
-
-        await storeInput({ temprature, date, inputData });
-        await storeWeather(fetchedWeather);
-        await getProjectData();
+    const url = constructAPI(inputData.zip);
+    const fetchedWeather = await getWeatherData(url);
+    if (inputData.feeling && inputData.zip && fetchedWeather.cod != '404') {
+        await storeData({ inputData, fetchedWeather });
+        const journalData = await getProjectData();
+        updateUI(journalData);
     } else {
-        console.log('Please Enter valid input');
+        alert('Please Enter valid input');
     }
+};
+/**
+ * @description Updates the UI depending on the user input and the fetched data
+ */
+const updateUI = async ({ temprature, feeling }) => {
+    document.getElementById('date').innerHTML = `📅 Date: ${date}`;
+    document.getElementById('temp').innerHTML = `🌡️ Temprature: ${temprature}`;
+    document.getElementById('feel').innerHTML = `🌼 Feeling:${feeling}`;
+    clearValues(document.getElementsByTagName('input'));
 };
 
 /**
@@ -108,7 +115,7 @@ const makeReq = async (url, reqInfo) => {
  * @param {object} data data to be stored
  */
 const storeInput = async (data) => {
-    const reqData = data;
+    const reqData = { date, data };
     const url = '/storeInput';
     const reqInfo = {
         method: 'post',
@@ -133,6 +140,14 @@ const storeWeather = async (data) => {
     makeReq(url, reqInfo);
 };
 
+/**
+ * @description Wrapper function to store data in the server using POST requests
+ */
+const storeData = async (data) => {
+    const { inputData, fetchedWeather } = data;
+    await storeInput(inputData);
+    await storeWeather(fetchedWeather);
+};
 /**
  * @description Getting user input from the DOM
  */

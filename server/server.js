@@ -9,7 +9,7 @@ const app = express();
 const { PORT } = process.env;
 
 // Setup empty JS object to act as endpoint for all routes
-let projectData = { inputData: {}, weatherData: {} };
+let projectData = { date: '', inputData: {}, weatherData: {} };
 
 /* Middleware*/
 app.use(body_parser.urlencoded({ extended: false }));
@@ -27,17 +27,21 @@ app.listen(PORT, listening);
 
 //GET Route
 app.get('/getProjectData', (req, res) => {
+    const temprature = projectData.weatherData.main.temp;
+    const feeling = projectData.inputData.feeling;
+    const date = projectData.date;
     console.log(projectData);
-    res.send(projectData);
+    res.send({ date, temprature, feeling });
 });
 //POST Routes
 app.post('/storeInput', (req, res) => {
-    projectData.inputData = req.body;
-    console.log("Data Stored ");
+    projectData.date = req.body.date;
+    projectData.inputData = req.body.data;
+    console.log('Data Stored ');
     res.send({ msg: 'Data Stored' });
 });
 app.post('/storeWeather', (req, res) => {
     projectData.weatherData = req.body;
-    console.log("Data Stored ");
+    console.log('Data Stored ');
     res.send({ msg: 'Data Stored' });
 });
