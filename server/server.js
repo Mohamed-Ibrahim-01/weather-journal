@@ -1,6 +1,7 @@
 // Express to run server and routes
 const express = require('express');
 /* Dependencies */
+const path = require('path');
 const cors = require('cors');
 const body_parser = require('body-parser');
 require('dotenv').config();
@@ -17,7 +18,8 @@ app.use(body_parser.json());
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('../app'));
+const appDir = path.dirname(require.main.filename);
+app.use(express.static(`${appDir}/../app`));
 
 // Spin up the server
 function listening() {

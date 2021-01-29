@@ -2,7 +2,7 @@
  * Global variables
  */
 let d = new Date();
-let date = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let date = d.getMonth()+1 + '/' + d.getDate() + '/' + d.getFullYear();
 const APIKEY = '62e30290b589b588152e348058e99031';
 
 // Event listeners to add function to existing HTML DOM element
